@@ -1,0 +1,21 @@
+CREATE TABLE PhoneBook (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    phone_number VARCHAR(15) UNIQUE
+);
+COPY PhoneBook(first_name, last_name, phone_number)
+FROM '/path/to/phonebook.csv'
+DELIMITER ','
+CSV HEADER;
+INSERT INTO PhoneBook (first_name, last_name, phone_number)
+VALUES ('Attila', 'Gridassov', '76677667'),
+       ('Misha', 'Kazybek', '777777777');
+UPDATE PhoneBook
+SET first_name = 'NewFirstName', phone_number = '76677667'
+WHERE first_name = 'John' AND phone_number = '777777777';
+SELECT * FROM PhoneBook;
+SELECT * FROM PhoneBook WHERE first_name = 'Attila';
+SELECT * FROM PhoneBook WHERE phone_number = '76677667';
+DELETE FROM PhoneBook WHERE phone_number = '777777777';
+DELETE FROM PhoneBook WHERE first_name = 'Misha';
