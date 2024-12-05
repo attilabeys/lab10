@@ -9,16 +9,15 @@ CREATE TABLE user_score (
     PRIMARY KEY (user_id)
 );
 SELECT id, level FROM users WHERE username = 'Attila';
-INSERT INTO users (username) VALUES ('Attila') RETURNING id;
+INSERT INTO users (username) VALUES ('Zhambul') RETURNING id;
 UPDATE user_score
 SET score = 500
-WHERE user_id = (SELECT id FROM users WHERE username = 'Attila');
+WHERE user_id = (SELECT id FROM users WHERE username = 'Maxat');
 UPDATE users
 SET level = 2
-WHERE username = 'example_username';
+WHERE username = 'Damil';
 UPDATE user_score
 SET score = 500
-WHERE user_id = (SELECT id FROM users WHERE username = 'Attila');
+WHERE user_id = (SELECT id FROM users WHERE username = 'Egor');
 UPDATE users
 SET level = 2
-WHERE username = 'Attila';
